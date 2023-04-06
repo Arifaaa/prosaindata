@@ -159,6 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Get_data.html">Tugas 2 (Pipelines)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Klasifikasi Teks</a></li>
 </ul>
 
     </div>
@@ -416,26 +417,17 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting snscrape
-  Downloading snscrape-0.6.2.20230320-py3-none-any.whl (71 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/71.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">71.8/71.8 KB</span> <span class=" -Color -Color-Red">6.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.2)
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.11.2)
-Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.10.7)
+Requirement already satisfied: snscrape in /usr/local/lib/python3.9/dist-packages (0.6.2.20230320)
 Requirement already satisfied: requests[socks] in /usr/local/lib/python3.9/dist-packages (from snscrape) (2.27.1)
+Requirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.2)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.10.7)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;snscrape) (2.4)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (3.4)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.26.15)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2.0.12)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (3.4)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2022.12.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2.0.12)
 Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.7.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: snscrape
-Successfully installed snscrape-0.6.2.20230320
 </pre></div>
 </div>
 </div>
@@ -490,26 +482,9 @@ Successfully installed snscrape-0.6.2.20230320
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting bs4
-  Downloading bs4-0.0.1.tar.gz (1.1 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: bs4 in /usr/local/lib/python3.9/dist-packages (0.0.1)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;bs4) (2.4)
-Building wheels for collected packages: bs4
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for bs4 (setup.py) ... ?25l?25hdone
-  Created wheel for bs4: filename=bs4-0.0.1-py3-none-any.whl size=1270 sha256=225f954dc34b477461aed660258d744d23ded4390a8740fea8484b1730f507e4
-  Stored in directory: /root/.cache/pip/wheels/73/2b/cb/099980278a0c9a3e57ff1a89875ec07bfa0b6fcbebb9a8cad3
-Successfully built bs4
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: bs4
-Successfully installed bs4-0.0.1
 </pre></div>
 </div>
 </div>
@@ -607,7 +582,7 @@ Successfully installed bs4-0.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-7cd6d934-57a8-475e-9baa-e5b9cd309e7a">
+  <div id="df-3ec91a24-58a4-4681-8ef8-4f688926e676">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -726,7 +701,7 @@ Successfully installed bs4-0.0.1
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-7cd6d934-57a8-475e-9baa-e5b9cd309e7a')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-3ec91a24-58a4-4681-8ef8-4f688926e676')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -777,12 +752,12 @@ Successfully installed bs4-0.0.1
 
       <script>
         const buttonEl =
-          document.querySelector('#df-7cd6d934-57a8-475e-9baa-e5b9cd309e7a button.colab-df-convert');
+          document.querySelector('#df-3ec91a24-58a4-4681-8ef8-4f688926e676 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-7cd6d934-57a8-475e-9baa-e5b9cd309e7a');
+          const element = document.querySelector('#df-3ec91a24-58a4-4681-8ef8-4f688926e676');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -883,7 +858,7 @@ Successfully installed bs4-0.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-7c0ec50b-32d1-4034-953e-86bbb81abd27">
+  <div id="df-70398506-0837-4a60-bf0a-4a2da0bfa87c">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1061,7 +1036,7 @@ Successfully installed bs4-0.0.1
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-7c0ec50b-32d1-4034-953e-86bbb81abd27')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-70398506-0837-4a60-bf0a-4a2da0bfa87c')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1112,12 +1087,12 @@ Successfully installed bs4-0.0.1
 
       <script>
         const buttonEl =
-          document.querySelector('#df-7c0ec50b-32d1-4034-953e-86bbb81abd27 button.colab-df-convert');
+          document.querySelector('#df-70398506-0837-4a60-bf0a-4a2da0bfa87c button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-7c0ec50b-32d1-4034-953e-86bbb81abd27');
+          const element = document.querySelector('#df-70398506-0837-4a60-bf0a-4a2da0bfa87c');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1165,9 +1140,9 @@ Successfully installed bs4-0.0.1
 Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.27.1)
 Requirement already satisfied: bs4 in /usr/local/lib/python3.9/dist-packages (0.0.1)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (3.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;bs4) (2.4)
 </pre></div>
