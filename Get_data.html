@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tugas 2 (Pipelines) &#8212; Proyek Sains Data - B</title>
+    <title>Get Data Multi Database &#8212; Proyek Sains Data - B</title>
   
   
   
@@ -155,10 +155,10 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TUGAS</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas Proyek Sains Data - B</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="crawling.html">Crawling Data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas 2 (Pipelines)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Get Data Multi Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_timeseries.html">Data Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">UTS</a></li>
 </ul>
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tugas 2 (Pipelines)</h1>
+    <h1>Get Data Multi Database</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,15 +385,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data">Get Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-environment">Persiapan Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql-local">PostgreSQL Local</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-postgresql-elephant-sql">Cloud PostgreSQL - Elephant SQL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mysql-local">MySQL Local</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-server">SQL Server</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline">Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-environment">Persiapan Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql-local">PostgreSQL Local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-postgresql-elephant-sql">Cloud PostgreSQL - Elephant SQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mysql-local">MySQL Local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-server">SQL Server</a></li>
 </ul>
             </nav>
         </div>
@@ -405,8 +401,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="tugas-2-pipelines">
-<h1>Tugas 2 (Pipelines)<a class="headerlink" href="#tugas-2-pipelines" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="get-data-multi-database">
+<h1>Get Data Multi Database<a class="headerlink" href="#get-data-multi-database" title="Permalink to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>Get Data:</p></li>
 </ol>
@@ -419,10 +415,8 @@ document.write(`
 <ol class="arabic simple" start="2">
 <li><p>Create Pipelines</p></li>
 </ol>
-<div class="section" id="get-data">
-<h2>Get Data<a class="headerlink" href="#get-data" title="Permalink to this heading">#</a></h2>
 <div class="section" id="persiapan-environment">
-<h3>Persiapan Environment<a class="headerlink" href="#persiapan-environment" title="Permalink to this heading">#</a></h3>
+<h2>Persiapan Environment<a class="headerlink" href="#persiapan-environment" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyodbc
@@ -492,7 +486,7 @@ Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 <div class="section" id="postgresql-local">
-<h3>PostgreSQL Local<a class="headerlink" href="#postgresql-local" title="Permalink to this heading">#</a></h3>
+<h2>PostgreSQL Local<a class="headerlink" href="#postgresql-local" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s2">&quot;prosain201&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;rifa&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span><span class="p">)</span>
@@ -530,7 +524,7 @@ Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 <div class="section" id="cloud-postgresql-elephant-sql">
-<h3>Cloud PostgreSQL - Elephant SQL<a class="headerlink" href="#cloud-postgresql-elephant-sql" title="Permalink to this heading">#</a></h3>
+<h2>Cloud PostgreSQL - Elephant SQL<a class="headerlink" href="#cloud-postgresql-elephant-sql" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
@@ -620,7 +614,7 @@ Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 <div class="section" id="mysql-local">
-<h3>MySQL Local<a class="headerlink" href="#mysql-local" title="Permalink to this heading">#</a></h3>
+<h2>MySQL Local<a class="headerlink" href="#mysql-local" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;prosain201&quot;</span><span class="p">)</span>
@@ -681,7 +675,7 @@ Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 <div class="section" id="sql-server">
-<h3>SQL Server<a class="headerlink" href="#sql-server" title="Permalink to this heading">#</a></h3>
+<h2>SQL Server<a class="headerlink" href="#sql-server" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cnxn_str</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;DRIVER={SQL Server};&quot;</span>
@@ -966,10 +960,6 @@ Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 </div>
-<div class="section" id="pipeline">
-<h2>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this heading">#</a></h2>
-</div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1038,15 +1028,11 @@ Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.9/dist
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data">Get Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-environment">Persiapan Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql-local">PostgreSQL Local</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-postgresql-elephant-sql">Cloud PostgreSQL - Elephant SQL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mysql-local">MySQL Local</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-server">SQL Server</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline">Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-environment">Persiapan Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql-local">PostgreSQL Local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-postgresql-elephant-sql">Cloud PostgreSQL - Elephant SQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mysql-local">MySQL Local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-server">SQL Server</a></li>
 </ul>
   </nav></div>
 
