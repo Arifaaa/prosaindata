@@ -159,7 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Get_data.html">Tugas 2 (Pipelines)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uts.html">Klasifikasi Teks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_timeseries.html">Data Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">UTS</a></li>
 </ul>
 
     </div>
@@ -418,15 +419,15 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: snscrape in /usr/local/lib/python3.9/dist-packages (0.6.2.20230320)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.10.7)
 Requirement already satisfied: requests[socks] in /usr/local/lib/python3.9/dist-packages (from snscrape) (2.27.1)
 Requirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.2)
-Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.10.7)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;snscrape) (2.4)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.26.15)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (3.4)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2.0.12)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.26.15)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (3.4)
 Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.7.1)
 </pre></div>
 </div>
@@ -582,7 +583,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-3ec91a24-58a4-4681-8ef8-4f688926e676">
+  <div id="df-ec961d51-afdc-4f37-82a9-2718eedb6fde">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -701,7 +702,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-3ec91a24-58a4-4681-8ef8-4f688926e676')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-ec961d51-afdc-4f37-82a9-2718eedb6fde')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -752,12 +753,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 
       <script>
         const buttonEl =
-          document.querySelector('#df-3ec91a24-58a4-4681-8ef8-4f688926e676 button.colab-df-convert');
+          document.querySelector('#df-ec961d51-afdc-4f37-82a9-2718eedb6fde button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-3ec91a24-58a4-4681-8ef8-4f688926e676');
+          const element = document.querySelector('#df-ec961d51-afdc-4f37-82a9-2718eedb6fde');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -858,7 +859,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-70398506-0837-4a60-bf0a-4a2da0bfa87c">
+  <div id="df-69112d4c-57ba-44dc-a88f-8639c58f09ea">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1036,7 +1037,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-70398506-0837-4a60-bf0a-4a2da0bfa87c')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-69112d4c-57ba-44dc-a88f-8639c58f09ea')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1087,12 +1088,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 
       <script>
         const buttonEl =
-          document.querySelector('#df-70398506-0837-4a60-bf0a-4a2da0bfa87c button.colab-df-convert');
+          document.querySelector('#df-69112d4c-57ba-44dc-a88f-8639c58f09ea button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-70398506-0837-4a60-bf0a-4a2da0bfa87c');
+          const element = document.querySelector('#df-69112d4c-57ba-44dc-a88f-8639c58f09ea');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1139,10 +1140,10 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.27.1)
 Requirement already satisfied: bs4 in /usr/local/lib/python3.9/dist-packages (0.0.1)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (3.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;bs4) (2.4)
 </pre></div>
