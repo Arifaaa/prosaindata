@@ -32,13 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-c = twint.Config()
-c.Search = '#capres2024 AND #ganjarpranowo'
-c.Lang = 'id'
-c.Limit = 1000
-# c.Since = "2019-01-01"
-# c.Until = "2022-01-01"
-c.Pandas = True
-twint.run.Search(c)
+['pta = []', '', 'for i in range(1,172):', '  URL = "https://pta.trunojoyo.ac.id/c_search/byprod/10/" + str(i+1)', '  r = requests.get(URL)']
+...
+['', "    pta.append([namaPenulis, nim, it.a.text.strip('\\n'), abstrak])", '    ', "pta_df = pd.DataFrame(pta, columns=['Penulis', 'NIM', 'Judul', 'Abstrak'])", 'pta_df']
 -------------------
 

@@ -27,7 +27,7 @@ sl.head()
 
 [0;31m[0m
 [0;31mOperationalError[0mTraceback (most recent call last)
-[0;32m<ipython-input-6-f082ad7ec146>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-6-f082ad7ec146>[0m in [0;36m<cell line: 1>[0;34m()[0m
 [0;32m----> 1[0;31m [0mconn[0m [0;34m=[0m [0mpsycopg2[0m[0;34m.[0m[0mconnect[0m[0;34m([0m[0mdatabase[0m[0;34m=[0m[0;34m"prosain201"[0m[0;34m,[0m [0muser[0m[0;34m=[0m[0;34m"postgres"[0m[0;34m,[0m [0mpassword[0m[0;34m=[0m[0;34m"rifa"[0m[0;34m,[0m [0mhost[0m[0;34m=[0m[0;34m"localhost"[0m[0;34m,[0m [0mport[0m[0;34m=[0m[0;34m"5432"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0mcur[0m [0;34m=[0m [0mconn[0m[0;34m.[0m[0mcursor[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0mcur[0m[0;34m.[0m[0mexecute[0m[0;34m([0m[0;34m"SELECT sepallength FROM iris"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
