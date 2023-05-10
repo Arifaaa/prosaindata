@@ -1,0 +1,2150 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latent Semantic Analysis &#8212; Proyek Sains Data - B</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'topik-modelling';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tugas Pagerank" href="pagerank.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/rifalogo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/rifalogo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas Proyek Sains Data - B</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="crawling.html">Crawling Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Get_data.html">Get Data Multi Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_timeseries.html">Data Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="klasifikasi_teks.html">Klasifikasi Teks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">UTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagerank.html">Tugas Pagerank</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Latent Semantic Analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Arifaaa/prosaindata/blob/gh-pages/_sources/topik-modelling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Arifaaa/prosaindata" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Arifaaa/prosaindata/issues/new?title=Issue%20on%20page%20%2Ftopik-modelling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/topik-modelling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Latent Semantic Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-text">Clean Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword">Stopword</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-word">Slank Word</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">Tf-Idf</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="latent-semantic-analysis">
+<h1>Latent Semantic Analysis<a class="headerlink" href="#latent-semantic-analysis" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>nltk
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>indoNLP
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: nltk in /usr/local/lib/python3.10/dist-packages (3.8.1)
+Requirement already satisfied: click in /usr/local/lib/python3.10/dist-packages (from nltk) (8.1.3)
+Requirement already satisfied: joblib in /usr/local/lib/python3.10/dist-packages (from nltk) (1.2.0)
+Requirement already satisfied: regex&gt;=2021.8.3 in /usr/local/lib/python3.10/dist-packages (from nltk) (2022.10.31)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from nltk) (4.65.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting indoNLP
+  Downloading indoNLP-0.3.4-py3-none-any.whl (121 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/121.9 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">121.9/121.9 kB</span> <span class=" -Color -Color-Red">3.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: indoNLP
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed indoNLP-0.3.4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1">#pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#numpy</span>
+<span class="kn">import</span> <span class="nn">re</span> <span class="c1">#regex</span>
+<span class="kn">import</span> <span class="nn">string</span> <span class="c1">#string population</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span> <span class="c1">#tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span> <span class="c1">#stopword</span>
+<span class="kn">from</span> <span class="nn">indoNLP.preprocessing</span> <span class="kn">import</span> <span class="n">replace_slang</span> <span class="c1">#slank word</span>
+<span class="kn">from</span> <span class="nn">nltk.stem.porter</span> <span class="kn">import</span> <span class="n">PorterStemmer</span> <span class="c1">#stemming</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.oauth2.credentials</span> <span class="kn">import</span> <span class="n">Credentials</span>
+<span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+
+<span class="c1"># Masukkan kunci API YouTube </span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;AIzaSyCRMl8hjMavlWuIBz3iHzMJBxPqyp3HFxA&quot;</span>
+
+<span class="c1"># Masukkan ID video YouTube yang ingin diambil komentarnya</span>
+<span class="n">video_id</span> <span class="o">=</span> <span class="s2">&quot;avBvTUFnoIU&quot;</span>
+
+<span class="c1"># Inisialisasi kredensial OAuth 2.0 dari file JSON</span>
+<span class="n">creds</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Buat koneksi ke API YouTube</span>
+<span class="n">youtube</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s2">&quot;youtube&quot;</span><span class="p">,</span> <span class="s2">&quot;v3&quot;</span><span class="p">,</span> <span class="n">developerKey</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
+
+<span class="c1"># Membuat request untuk mengambil komentar dari video</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">youtube</span><span class="o">.</span><span class="n">commentThreads</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
+        <span class="n">part</span><span class="o">=</span><span class="s2">&quot;snippet&quot;</span><span class="p">,</span>
+        <span class="n">videoId</span><span class="o">=</span><span class="n">video_id</span><span class="p">,</span>
+        <span class="n">textFormat</span><span class="o">=</span><span class="s2">&quot;plainText&quot;</span>
+    <span class="p">)</span>
+
+<span class="c1"># Mengirim request dan mendapatkan respon dari API</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="c1"># Mengambil komentar dari respon</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span>
+    <span class="n">comment</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;snippet&quot;</span><span class="p">][</span><span class="s2">&quot;topLevelComment&quot;</span><span class="p">][</span><span class="s2">&quot;snippet&quot;</span><span class="p">][</span><span class="s2">&quot;textDisplay&quot;</span><span class="p">]</span>
+    <span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
+
+<span class="c1"># Mencetak komentar</span>
+<span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maka dari itu jangan pilih yang selalu melakukan kebohongan dan kepalsuan, sekolahan tapi ijasahnya palsu dan pasti kebijakannya tidak tepat sasaran
+Anis optimis jika wakilnya lbu kopipah indar parawansah
+Yg penting jangan samapai ..agama jual politk  tapi malah membenturkan rayat
+Cuman karna peristiwa gorong gorong..kebanyakan rakyat terbuai tergoda hingga akhirnya tertipu
+penampilan merakyat adalah modus  yg gampang di jual ke rakyat indonesia.
+karna banyak rakyat engga paham kebijakan yg dibuat penguasa.
+karna bamyak kebijakan diumumkannya pada saat rakyat tidur pulas.alias malam hari
+Betul Mbak..
+Hanya Ganjar aja pilihanku karna aku orang Jawa duwipa asli
+Cuma Anis layak jadi presiden.... maco...
+Orang bodoh akan ketipu dengan pencitraan...yang sok pro rakyat...semoga rakyat kali ini lebih cerdas....
+Penampilan merakyat tp maniak bokep
+Smg ALLAH SWT meridhoi PK ANIS memimpin INDONESIA Aamiin
+Mba sherly Keren
+Smg ucapan perempuan bisa jdi Motivasi para capres
+Omong kosong dari anaknya gelandangan politik ini
+ibu ibu mas anies ni mantap
+Rakyat paham, siapa yg mengindap mythomania,
+Rakyat paham siapa pemicu pelecehan thd kaum hawa,
+Rakyat paham yg menghianati rakyat, n
+Rakyat paham siapa yg punya integritas, intelektual, prestasi di dlm n luar negri n sangat paham capres yg punya gagasan dlm memakmurkan, mensejahterakan rakyat n menggemakan keadilan bagi seluruh rakyat NKRI.
+betul itu MBA sy setuju
+Paling suka klo Narasumbernya ada Sherly Anavita
+Seng dadi buktine Zu nek Anis bukti tor prestasi ne opo jelasno Ojo ang ger ngacir wae
+GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SAKING PEDULINYA ESEK ESEK PUN DI JADIKAN TONTONAN
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">google.oauth2.credentials</span> <span class="kn">import</span> <span class="n">Credentials</span>
+
+<span class="c1"># kunci API YouTube</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;AIzaSyCqfJwFbKpgnDCuwdhtnJrSnETxjkVUrKE&quot;</span>
+
+<span class="c1"># ID video YouTube yang ingin diambil komentarnya</span>
+<span class="n">video_id</span> <span class="o">=</span> <span class="s2">&quot;avBvTUFnoIU&quot;</span>
+
+<span class="c1"># Inisialisasi kredensial </span>
+<span class="n">creds</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Buat koneksi ke API YouTube</span>
+<span class="n">youtube</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="s2">&quot;youtube&quot;</span><span class="p">,</span> <span class="s2">&quot;v3&quot;</span><span class="p">,</span> <span class="n">developerKey</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
+
+<span class="c1"># Membuat request untuk mengambil komentar dari video</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">nextPageToken</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">youtube</span><span class="o">.</span><span class="n">commentThreads</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
+        <span class="n">part</span><span class="o">=</span><span class="s2">&quot;snippet&quot;</span><span class="p">,</span>
+        <span class="n">videoId</span><span class="o">=</span><span class="n">video_id</span><span class="p">,</span>
+        <span class="n">textFormat</span><span class="o">=</span><span class="s2">&quot;plainText&quot;</span><span class="p">,</span>
+        <span class="n">pageToken</span><span class="o">=</span><span class="n">nextPageToken</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span>
+        <span class="n">comment</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;snippet&quot;</span><span class="p">][</span><span class="s2">&quot;topLevelComment&quot;</span><span class="p">][</span><span class="s2">&quot;snippet&quot;</span><span class="p">]</span>
+        <span class="n">comment_data</span> <span class="o">=</span> <span class="p">{</span>
+           
+            <span class="s2">&quot;Comment&quot;</span><span class="p">:</span> <span class="n">comment</span><span class="p">[</span><span class="s2">&quot;textDisplay&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;Author&quot;</span><span class="p">:</span> <span class="n">comment</span><span class="p">[</span><span class="s2">&quot;authorDisplayName&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;Likes&quot;</span><span class="p">:</span> <span class="n">comment</span><span class="p">[</span><span class="s2">&quot;likeCount&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comment_data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;nextPageToken&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="n">nextPageToken</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;nextPageToken&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">comments</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Author&#39;</span><span class="p">,</span> <span class="s1">&#39;Comment&#39;</span><span class="p">,</span> <span class="s1">&#39;Likes&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-89c80b9b-3784-4846-95ff-06bd5dc32c1f">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Author</th>
+      <th>Comment</th>
+      <th>Likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Roril Roril</td>
+      <td>Maka dari itu jangan pilih yang selalu melakuk...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Olih Muslih</td>
+      <td>Anis optimis jika wakilnya lbu kopipah indar p...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hakim Amin</td>
+      <td>Yg penting jangan samapai ..agama jual politk ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rofiq Ahmad</td>
+      <td>Cuman karna peristiwa gorong gorong..kebanyaka...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sensos88</td>
+      <td>penampilan merakyat adalah modus  yg gampang d...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>samburi muchidin</td>
+      <td>Anies is the best</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>Iratul Jannah</td>
+      <td>Yang paling peduli emak 2 pak Prabowo yang ber...</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>713</th>
+      <td>RISKITzy</td>
+      <td>Kalo saya suka sama orang. Yaman biar. Aman???...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>714</th>
+      <td>Widodo Widodo</td>
+      <td>Klo perempuan milih petugas partai yang punya ...</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>715</th>
+      <td>Muhana 2002</td>
+      <td>Naeasuber bukan perempuan bicara ini Tim sukses,</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>716 rows × 3 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-89c80b9b-3784-4846-95ff-06bd5dc32c1f')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-89c80b9b-3784-4846-95ff-06bd5dc32c1f button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-89c80b9b-3784-4846-95ff-06bd5dc32c1f');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csv</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/youtube_comment.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/youtube_comment.csv&#39;</span><span class="p">)</span>
+<span class="n">show_csv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Author</th>
+      <th>Comment</th>
+      <th>Likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Roril Roril</td>
+      <td>Maka dari itu jangan pilih yang selalu melakuk...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Olih Muslih</td>
+      <td>Anis optimis jika wakilnya lbu kopipah indar p...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hakim Amin</td>
+      <td>Yg penting jangan samapai ..agama jual politk ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rofiq Ahmad</td>
+      <td>Cuman karna peristiwa gorong gorong..kebanyaka...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sensos88</td>
+      <td>penampilan merakyat adalah modus  yg gampang d...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>samburi muchidin</td>
+      <td>Anies is the best</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>Iratul Jannah</td>
+      <td>Yang paling peduli emak 2 pak Prabowo yang ber...</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>713</th>
+      <td>RISKITzy</td>
+      <td>Kalo saya suka sama orang. Yaman biar. Aman???...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>714</th>
+      <td>Widodo Widodo</td>
+      <td>Klo perempuan milih petugas partai yang punya ...</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>715</th>
+      <td>Muhana 2002</td>
+      <td>Naeasuber bukan perempuan bicara ini Tim sukses,</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>716 rows × 3 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Prepocessing</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">listStopword</span> <span class="o">=</span>  <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stemmer</span> <span class="o">=</span> <span class="n">PorterStemmer</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">remove_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span> <span class="c1">#remove emoji</span>
+    <span class="n">emoji_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[&quot;</span>
+      <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\U0001F600</span><span class="s2">-</span><span class="se">\U0001F64F</span><span class="s2">&quot;</span>  <span class="c1"># emoticons</span>
+      <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\U0001F300</span><span class="s2">-</span><span class="se">\U0001F5FF</span><span class="s2">&quot;</span>  <span class="c1"># symbols &amp; pictographs</span>
+      <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\U0001F680</span><span class="s2">-</span><span class="se">\U0001F6FF</span><span class="s2">&quot;</span>  <span class="c1"># transport &amp; map symbols</span>
+      <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\U0001F1E0</span><span class="s2">-</span><span class="se">\U0001F1FF</span><span class="s2">&quot;</span>  <span class="c1"># flags (iOS)</span>
+      <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\U00002702</span><span class="s2">-</span><span class="se">\U000027B0</span><span class="s2">&quot;</span>
+      <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\U000024C2</span><span class="s2">-</span><span class="se">\U0001F251</span><span class="s2">&quot;</span>
+      <span class="s2">&quot;]+&quot;</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">UNICODE</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">emoji_pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">remove_unwanted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span> <span class="c1">#clean text</span>
+    <span class="c1"># remove user mentions</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;@[A-Za-z0-9_]+&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">document</span><span class="p">)</span>
+    <span class="c1"># remove URLS </span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;http\S+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">document</span><span class="p">)</span>
+    <span class="c1"># remove hashtags</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;#[A-Za-z0-9_]+&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">document</span><span class="p">)</span>
+    <span class="c1"># remove emoji&#39;s</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_emoji</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+    <span class="c1"># remove punctuation</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[^0-9A-Za-z ]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">,</span> <span class="n">document</span><span class="p">)</span>
+    <span class="c1"># remove double spaces</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">document</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  
+  <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span> <span class="c1">#tokenize -&gt; memisah kalimat </span>
+    <span class="k">return</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+  
+  <span class="k">def</span> <span class="nf">stopWord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span> <span class="c1">#stopword -&gt; menghapus kata hubung</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">kata</span> <span class="k">for</span> <span class="n">kata</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">kata</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">listStopword</span><span class="p">]</span>
+  
+  <span class="k">def</span> <span class="nf">slank_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span> <span class="c1">#slank word -&gt; mengganti kata yang tidak baku</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">replace_slang</span><span class="p">(</span><span class="n">kata</span><span class="p">)</span> <span class="k">for</span> <span class="n">kata</span> <span class="ow">in</span> <span class="n">text</span><span class="p">]</span>
+
+  <span class="k">def</span> <span class="nf">stemming</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span> <span class="c1">#stemming -&gt; mengganti kata menjadi kata dasar</span>
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">kata</span><span class="p">)</span> <span class="k">for</span> <span class="n">kata</span> <span class="ow">in</span> <span class="n">text</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="n">Prepocessing</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="clean-text">
+<h2>Clean Text<a class="headerlink" href="#clean-text" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Comment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">remove_unwanted</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tokenize">
+<h2>Tokenize<a class="headerlink" href="#tokenize" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tokenize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stopword">
+<h2>Stopword<a class="headerlink" href="#stopword" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tokenize&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">stopWord</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="slank-word">
+<h2>Slank Word<a class="headerlink" href="#slank-word" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;slankword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopword&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">slank_word</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stemming">
+<h2>Stemming<a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;slankword&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">stemming</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Comment&#39;</span><span class="p">,</span> <span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="s1">&#39;tokenize&#39;</span><span class="p">,</span> <span class="s1">&#39;stopword&#39;</span><span class="p">,</span> <span class="s1">&#39;slankword&#39;</span><span class="p">,</span> <span class="s1">&#39;stem&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-f2bfb642-6886-4998-ad9a-587b5643a74f">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Comment</th>
+      <th>clean</th>
+      <th>tokenize</th>
+      <th>stopword</th>
+      <th>slankword</th>
+      <th>stem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Maka dari itu jangan pilih yang selalu melakuk...</td>
+      <td>Maka dari itu jangan pilih yang selalu melakuk...</td>
+      <td>[maka, dari, itu, jangan, pilih, yang, selalu,...</td>
+      <td>[pilih, kebohongan, kepalsuan, sekolahan, ijas...</td>
+      <td>[pilih, kebohongan, kepalsuan, sekolahan, ijas...</td>
+      <td>pilih kebohongan kepalsuan sekolahan ijasahnya...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Anis optimis jika wakilnya lbu kopipah indar p...</td>
+      <td>Anis optimis jika wakilnya lbu kopipah indar p...</td>
+      <td>[anis, optimis, jika, wakilnya, lbu, kopipah, ...</td>
+      <td>[anis, optimis, wakilnya, lbu, kopipah, indar,...</td>
+      <td>[anis, optimis, wakilnya, lbu, kopipah, indar,...</td>
+      <td>ani optimi wakilnya lbu kopipah indar parawansah</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Yg penting jangan samapai ..agama jual politk ...</td>
+      <td>Yg penting jangan samapai agama jual politk ta...</td>
+      <td>[yg, penting, jangan, samapai, agama, jual, po...</td>
+      <td>[yg, samapai, agama, jual, politk, membenturka...</td>
+      <td>[yang, samapai, agama, jual, politk, membentur...</td>
+      <td>yang samapai agama jual politk membenturkan rayat</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cuman karna peristiwa gorong gorong..kebanyaka...</td>
+      <td>Cuman karna peristiwa gorong gorongkebanyakan ...</td>
+      <td>[cuman, karna, peristiwa, gorong, gorongkebany...</td>
+      <td>[cuman, karna, peristiwa, gorong, gorongkebany...</td>
+      <td>[cuman, karena, peristiwa, gorong, gorongkeban...</td>
+      <td>cuman karena peristiwa gorong gorongkebanyakan...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>penampilan merakyat adalah modus  yg gampang d...</td>
+      <td>penampilan merakyat adalah modus yg gampang di...</td>
+      <td>[penampilan, merakyat, adalah, modus, yg, gamp...</td>
+      <td>[penampilan, merakyat, modus, yg, gampang, jua...</td>
+      <td>[penampilan, merakyat, modus, yang, gampang, j...</td>
+      <td>penampilan merakyat modu yang gampang jual rak...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>Anies is the best</td>
+      <td>Anies is the best</td>
+      <td>[anies, is, the, best]</td>
+      <td>[anies, is, the, best]</td>
+      <td>[anies, is, the, best]</td>
+      <td>ani is the best</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>Yang paling peduli emak 2 pak Prabowo yang ber...</td>
+      <td>Yang paling peduli emak 2 pak Prabowo yang ber...</td>
+      <td>[yang, paling, peduli, emak, 2, pak, prabowo, ...</td>
+      <td>[peduli, emak, 2, prabowo, berdaulat, nkri]</td>
+      <td>[peduli, emak, 2, prabowo, berdaulat, nkri]</td>
+      <td>peduli emak 2 prabowo berdaulat nkri</td>
+    </tr>
+    <tr>
+      <th>713</th>
+      <td>Kalo saya suka sama orang. Yaman biar. Aman???...</td>
+      <td>Kalo saya suka sama orang Yaman biar Aman</td>
+      <td>[kalo, saya, suka, sama, orang, yaman, biar, a...</td>
+      <td>[kalo, suka, orang, yaman, biar, aman]</td>
+      <td>[kalo, suka, orang, yaman, biar, aman]</td>
+      <td>kalo suka orang yaman biar aman</td>
+    </tr>
+    <tr>
+      <th>714</th>
+      <td>Klo perempuan milih petugas partai yang punya ...</td>
+      <td>Klo perempuan milih petugas partai yang punya ...</td>
+      <td>[klo, perempuan, milih, petugas, partai, yang,...</td>
+      <td>[klo, perempuan, milih, petugas, partai, hobi,...</td>
+      <td>[kalo, perempuan, memilih, petugas, partai, ho...</td>
+      <td>kalo perempuan memilih petuga partai hobi meno...</td>
+    </tr>
+    <tr>
+      <th>715</th>
+      <td>Naeasuber bukan perempuan bicara ini Tim sukses,</td>
+      <td>Naeasuber bukan perempuan bicara ini Tim sukses</td>
+      <td>[naeasuber, bukan, perempuan, bicara, ini, tim...</td>
+      <td>[naeasuber, perempuan, bicara, tim, sukses]</td>
+      <td>[naeasuber, perempuan, bicara, tim, sukses]</td>
+      <td>naeasub perempuan bicara tim suks</td>
+    </tr>
+  </tbody>
+</table>
+<p>716 rows × 6 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f2bfb642-6886-4998-ad9a-587b5643a74f')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-f2bfb642-6886-4998-ad9a-587b5643a74f button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-f2bfb642-6886-4998-ad9a-587b5643a74f');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_final</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;stem&#39;</span><span class="p">]]</span>
+<span class="n">df_final</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-9959ac75-b0af-4f5d-b864-4a32d908f8b1">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>pilih kebohongan kepalsuan sekolahan ijasahnya...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ani optimi wakilnya lbu kopipah indar parawansah</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>yang samapai agama jual politk membenturkan rayat</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>cuman karena peristiwa gorong gorongkebanyakan...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>penampilan merakyat modu yang gampang jual rak...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>ani is the best</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>peduli emak 2 prabowo berdaulat nkri</td>
+    </tr>
+    <tr>
+      <th>713</th>
+      <td>kalo suka orang yaman biar aman</td>
+    </tr>
+    <tr>
+      <th>714</th>
+      <td>kalo perempuan memilih petuga partai hobi meno...</td>
+    </tr>
+    <tr>
+      <th>715</th>
+      <td>naeasub perempuan bicara tim suks</td>
+    </tr>
+  </tbody>
+</table>
+<p>716 rows × 1 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9959ac75-b0af-4f5d-b864-4a32d908f8b1')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-9959ac75-b0af-4f5d-b864-4a32d908f8b1 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-9959ac75-b0af-4f5d-b864-4a32d908f8b1');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_save</span> <span class="o">=</span> <span class="n">df_final</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_save</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>pilih kebohongan kepalsuan sekolahan ijasahnya...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ani optimi wakilnya lbu kopipah indar parawansah</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>yang samapai agama jual politk membenturkan rayat</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>cuman karena peristiwa gorong gorongkebanyakan...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>penampilan merakyat modu yang gampang jual rak...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>700</th>
+      <td>ani is the best</td>
+    </tr>
+    <tr>
+      <th>701</th>
+      <td>peduli emak 2 prabowo berdaulat nkri</td>
+    </tr>
+    <tr>
+      <th>702</th>
+      <td>kalo suka orang yaman biar aman</td>
+    </tr>
+    <tr>
+      <th>703</th>
+      <td>kalo perempuan memilih petuga partai hobi meno...</td>
+    </tr>
+    <tr>
+      <th>704</th>
+      <td>naeasub perempuan bicara tim suks</td>
+    </tr>
+  </tbody>
+</table>
+<p>705 rows × 1 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_save</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/datasetCommentYt.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_main</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/datasetCommentYt.csv&#39;</span><span class="p">)</span>
+<span class="n">df_main</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-5553d861-f3aa-4604-83ef-a19a69bc4d84">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>pilih kebohongan kepalsuan sekolahan ijasahnya...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ani optimi wakilnya lbu kopipah indar parawansah</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>yang samapai agama jual politk membenturkan rayat</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>cuman karena peristiwa gorong gorongkebanyakan...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>penampilan merakyat modu yang gampang jual rak...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>700</th>
+      <td>ani is the best</td>
+    </tr>
+    <tr>
+      <th>701</th>
+      <td>peduli emak 2 prabowo berdaulat nkri</td>
+    </tr>
+    <tr>
+      <th>702</th>
+      <td>kalo suka orang yaman biar aman</td>
+    </tr>
+    <tr>
+      <th>703</th>
+      <td>kalo perempuan memilih petuga partai hobi meno...</td>
+    </tr>
+    <tr>
+      <th>704</th>
+      <td>naeasub perempuan bicara tim suks</td>
+    </tr>
+  </tbody>
+</table>
+<p>705 rows × 1 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-5553d861-f3aa-4604-83ef-a19a69bc4d84')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-5553d861-f3aa-4604-83ef-a19a69bc4d84 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-5553d861-f3aa-4604-83ef-a19a69bc4d84');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_main</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/datasetCommentYt.csv&#39;</span><span class="p">)</span>
+<span class="n">df_main</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-13c352ba-0bad-443a-847c-7ecc1563da63">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>pilih kebohongan kepalsuan sekolahan ijasahnya...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ani optimi wakilnya lbu kopipah indar parawansah</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>yang samapai agama jual politk membenturkan rayat</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>cuman karena peristiwa gorong gorongkebanyakan...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>penampilan merakyat modu yang gampang jual rak...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>700</th>
+      <td>ani is the best</td>
+    </tr>
+    <tr>
+      <th>701</th>
+      <td>peduli emak 2 prabowo berdaulat nkri</td>
+    </tr>
+    <tr>
+      <th>702</th>
+      <td>kalo suka orang yaman biar aman</td>
+    </tr>
+    <tr>
+      <th>703</th>
+      <td>kalo perempuan memilih petuga partai hobi meno...</td>
+    </tr>
+    <tr>
+      <th>704</th>
+      <td>naeasub perempuan bicara tim suks</td>
+    </tr>
+  </tbody>
+</table>
+<p>705 rows × 1 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-13c352ba-0bad-443a-847c-7ecc1563da63')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-13c352ba-0bad-443a-847c-7ecc1563da63 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-13c352ba-0bad-443a-847c-7ecc1563da63');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+</div>
+<div class="section" id="tf-idf">
+<h2>Tf-Idf<a class="headerlink" href="#tf-idf" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="c1"># Vectorize document using TF-IDF</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">documents_list</span> <span class="o">=</span> <span class="n">df_main</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents_list</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-23-db91a64dbd50&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">train_data</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents_list</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, raw_documents, y)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2131</span>             <span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sublinear_tf</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2132</span>         <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2133</span>         <span class="n">X</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2134</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2135</span>         <span class="c1"># X is already a transformed view of raw_documents so</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, raw_documents, y)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1386</span>                     <span class="k">break</span>
+<span class="g g-Whitespace">   </span><span class="mi">1387</span> 
+<span class="ne">-&gt; </span><span class="mi">1388</span>         <span class="n">vocabulary</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_vocab</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_vocabulary_</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1389</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1390</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">_count_vocab</span><span class="nt">(self, raw_documents, fixed_vocab)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span>         <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">raw_documents</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1274</span>             <span class="n">feature_counter</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="ne">-&gt; </span><span class="mi">1275</span>             <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">analyze</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span>                 <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1277</span>                     <span class="n">feature_idx</span> <span class="o">=</span> <span class="n">vocabulary</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">_analyze</span><span class="nt">(doc, analyzer, tokenizer, ngrams, preprocessor, decoder, stop_words)</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span> 
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="k">if</span> <span class="n">decoder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">106</span>         <span class="n">doc</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="k">if</span> <span class="n">analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">doc</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">decode</span><span class="nt">(self, doc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span> 
+<span class="g g-Whitespace">    </span><span class="mi">238</span>         <span class="k">if</span> <span class="n">doc</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">239</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>                 <span class="s2">&quot;np.nan is an invalid document, expected byte or unicode string.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>             <span class="p">)</span>
+
+<span class="ne">ValueError</span>: np.nan is an invalid document, expected byte or unicode string.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span> 
+<span class="c1"># Define the number of topics or components</span>
+<span class="n">num_components</span><span class="o">=</span><span class="mi">20</span>
+
+<span class="c1"># Create SVD object</span>
+<span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">num_components</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Fit SVD model on data</span>
+<span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+
+<span class="c1"># Get Singular values and Components </span>
+<span class="n">Sigma</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">singular_values_</span> 
+<span class="n">V_transpose</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-51-a470863592ed&gt;</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Fit SVD model on data</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Get Singular values and Components</span>
+
+<span class="ne">NameError</span>: name &#39;train_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pagerank.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tugas Pagerank</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-text">Clean Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword">Stopword</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-word">Slank Word</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">Tf-Idf</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Arifatul Maghfiroh (200411100201)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
