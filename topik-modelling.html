@@ -388,13 +388,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-text">Clean Text</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword">Stopword</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-word">Slank Word</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">Tf-Idf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credential-crawling-youtube">Credential &amp; Crawling YouTube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-text">Clean Text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword">Stopword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-word">Slank Word</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-data">Modelling Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">Tf-Idf</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-svd">Perform SVD</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -425,19 +433,7 @@ Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting indoNLP
-  Downloading indoNLP-0.3.4-py3-none-any.whl (121 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/121.9 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">121.9/121.9 kB</span> <span class=" -Color -Color-Red">3.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: indoNLP
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed indoNLP-0.3.4
+Requirement already satisfied: indoNLP in /usr/local/lib/python3.10/dist-packages (0.3.4)
 </pre></div>
 </div>
 </div>
@@ -456,6 +452,8 @@ Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (
 </div>
 </div>
 </div>
+<div class="section" id="credential-crawling-youtube">
+<h2>Credential &amp; Crawling YouTube<a class="headerlink" href="#credential-crawling-youtube" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.oauth2.credentials</span> <span class="kn">import</span> <span class="n">Credentials</span>
@@ -527,10 +525,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
-<span class="kn">from</span> <span class="nn">google.oauth2.credentials</span> <span class="kn">import</span> <span class="n">Credentials</span>
-
-<span class="c1"># kunci API YouTube</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kunci API YouTube</span>
 <span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;AIzaSyCqfJwFbKpgnDCuwdhtnJrSnETxjkVUrKE&quot;</span>
 
 <span class="c1"># ID video YouTube yang ingin diambil komentarnya</span>
@@ -576,7 +571,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-89c80b9b-3784-4846-95ff-06bd5dc32c1f">
+  <div id="df-c99ea231-93d1-449a-a21f-8a195ceb5719">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -672,7 +667,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>716 rows × 3 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-89c80b9b-3784-4846-95ff-06bd5dc32c1f')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c99ea231-93d1-449a-a21f-8a195ceb5719')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -723,12 +718,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-89c80b9b-3784-4846-95ff-06bd5dc32c1f button.colab-df-convert');
+          document.querySelector('#df-c99ea231-93d1-449a-a21f-8a195ceb5719 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-89c80b9b-3784-4846-95ff-06bd5dc32c1f');
+          const element = document.querySelector('#df-c99ea231-93d1-449a-a21f-8a195ceb5719');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -765,7 +760,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa">
+  <div id="df-d212017e-8a85-4c8c-9d18-e7ce47b6001d">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -861,7 +856,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>716 rows × 3 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d212017e-8a85-4c8c-9d18-e7ce47b6001d')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -912,12 +907,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa button.colab-df-convert');
+          document.querySelector('#df-d212017e-8a85-4c8c-9d18-e7ce47b6001d button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-94a545c7-bb5b-4bec-9cf1-9bb58bd9adfa');
+          const element = document.querySelector('#df-d212017e-8a85-4c8c-9d18-e7ce47b6001d');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -938,6 +933,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
   </div>
   </div></div>
 </div>
+</div>
 <div class="section" id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -950,10 +946,8 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to /root/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
 </pre></div>
 </div>
@@ -1017,9 +1011,8 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="clean-text">
-<h2>Clean Text<a class="headerlink" href="#clean-text" title="Permalink to this heading">#</a></h2>
+<h3>Clean Text<a class="headerlink" href="#clean-text" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Comment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">remove_unwanted</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -1029,7 +1022,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 </div>
 <div class="section" id="tokenize">
-<h2>Tokenize<a class="headerlink" href="#tokenize" title="Permalink to this heading">#</a></h2>
+<h3>Tokenize<a class="headerlink" href="#tokenize" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tokenize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -1039,7 +1032,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 </div>
 <div class="section" id="stopword">
-<h2>Stopword<a class="headerlink" href="#stopword" title="Permalink to this heading">#</a></h2>
+<h3>Stopword<a class="headerlink" href="#stopword" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tokenize&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">stopWord</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -1049,7 +1042,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 </div>
 <div class="section" id="slank-word">
-<h2>Slank Word<a class="headerlink" href="#slank-word" title="Permalink to this heading">#</a></h2>
+<h3>Slank Word<a class="headerlink" href="#slank-word" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;slankword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stopword&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">slank_word</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -1059,7 +1052,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 </div>
 <div class="section" id="stemming">
-<h2>Stemming<a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h2>
+<h3>Stemming<a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;slankword&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">stemming</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -1075,7 +1068,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f2bfb642-6886-4998-ad9a-587b5643a74f">
+  <div id="df-70e77c8b-d548-416f-bcbd-d2bf1f880a73">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1207,7 +1200,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>716 rows × 6 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-f2bfb642-6886-4998-ad9a-587b5643a74f')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-70e77c8b-d548-416f-bcbd-d2bf1f880a73')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1258,12 +1251,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-f2bfb642-6886-4998-ad9a-587b5643a74f button.colab-df-convert');
+          document.querySelector('#df-70e77c8b-d548-416f-bcbd-d2bf1f880a73 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-f2bfb642-6886-4998-ad9a-587b5643a74f');
+          const element = document.querySelector('#df-70e77c8b-d548-416f-bcbd-d2bf1f880a73');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1293,7 +1286,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-9959ac75-b0af-4f5d-b864-4a32d908f8b1">
+  <div id="df-aa18209d-a477-4c8c-8b3d-fb230fbf794f">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1365,7 +1358,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>716 rows × 1 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-9959ac75-b0af-4f5d-b864-4a32d908f8b1')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-aa18209d-a477-4c8c-8b3d-fb230fbf794f')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1416,12 +1409,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-9959ac75-b0af-4f5d-b864-4a32d908f8b1 button.colab-df-convert');
+          document.querySelector('#df-aa18209d-a477-4c8c-8b3d-fb230fbf794f button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-9959ac75-b0af-4f5d-b864-4a32d908f8b1');
+          const element = document.querySelector('#df-aa18209d-a477-4c8c-8b3d-fb230fbf794f');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1451,7 +1444,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8">
+  <div id="df-bced5fa6-a030-47f6-8d6d-07e80f4c8f5a">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1523,7 +1516,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>705 rows × 1 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-bced5fa6-a030-47f6-8d6d-07e80f4c8f5a')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1574,12 +1567,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8 button.colab-df-convert');
+          document.querySelector('#df-bced5fa6-a030-47f6-8d6d-07e80f4c8f5a button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-6102283c-ee4e-45ec-a1f8-cddb9fb54ea8');
+          const element = document.querySelector('#df-bced5fa6-a030-47f6-8d6d-07e80f4c8f5a');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1616,7 +1609,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-5553d861-f3aa-4604-83ef-a19a69bc4d84">
+  <div id="df-77280879-2e4c-42d7-b3aa-024780125372">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1688,7 +1681,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>705 rows × 1 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-5553d861-f3aa-4604-83ef-a19a69bc4d84')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-77280879-2e4c-42d7-b3aa-024780125372')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1739,12 +1732,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-5553d861-f3aa-4604-83ef-a19a69bc4d84 button.colab-df-convert');
+          document.querySelector('#df-77280879-2e4c-42d7-b3aa-024780125372 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-5553d861-f3aa-4604-83ef-a19a69bc4d84');
+          const element = document.querySelector('#df-77280879-2e4c-42d7-b3aa-024780125372');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1765,6 +1758,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
   </div>
   </div></div>
 </div>
+</div>
+</div>
+<div class="section" id="modelling-data">
+<h2>Modelling Data<a class="headerlink" href="#modelling-data" title="Permalink to this heading">#</a></h2>
+<div class="section" id="load-data">
+<h3>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_main</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/datasetCommentYt.csv&#39;</span><span class="p">)</span>
@@ -1774,7 +1773,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-13c352ba-0bad-443a-847c-7ecc1563da63">
+  <div id="df-31bc157c-a36a-4e8f-927b-b617df74ad17">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1846,7 +1845,7 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </table>
 <p>705 rows × 1 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-13c352ba-0bad-443a-847c-7ecc1563da63')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-31bc157c-a36a-4e8f-927b-b617df74ad17')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1897,12 +1896,12 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 
       <script>
         const buttonEl =
-          document.querySelector('#df-13c352ba-0bad-443a-847c-7ecc1563da63 button.colab-df-convert');
+          document.querySelector('#df-31bc157c-a36a-4e8f-927b-b617df74ad17 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-13c352ba-0bad-443a-847c-7ecc1563da63');
+          const element = document.querySelector('#df-31bc157c-a36a-4e8f-927b-b617df74ad17');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1925,105 +1924,285 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
 </div>
 </div>
 <div class="section" id="tf-idf">
-<h2>Tf-Idf<a class="headerlink" href="#tf-idf" title="Permalink to this heading">#</a></h2>
+<h3>Tf-Idf<a class="headerlink" href="#tf-idf" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-<span class="c1"># Vectorize document using TF-IDF</span>
-<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">documents_list</span> <span class="o">=</span> <span class="n">df_main</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents_list</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+
+<span class="c1"># Membentuk matriks dokumen x kata</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">stop_words</span><span class="o">=</span><span class="n">stopwords</span><span class="p">,</span>
+                        <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
+
+<span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Comment&#39;</span><span class="p">])</span>
+
+<span class="c1"># Melakukan dekomposisi matriks dengan SVD</span>
+<span class="n">svd_model</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">lsa_matrix</span> <span class="o">=</span> <span class="n">svd_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-23-db91a64dbd50&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">train_data</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents_list</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py:528: UserWarning: The parameter &#39;token_pattern&#39; will not be used since &#39;tokenizer&#39; is not None&#39;
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py:409: UserWarning: Your stop_words may be inconsistent with your preprocessing. Tokenizing the stop words generated tokens [&#39;baiknya&#39;, &#39;berkali&#39;, &#39;kali&#39;, &#39;kurangnya&#39;, &#39;mata&#39;, &#39;olah&#39;, &#39;sekurang&#39;, &#39;setidak&#39;, &#39;tama&#39;, &#39;tidaknya&#39;] not in stop_words.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="perform-svd">
+<h3>Perform SVD<a class="headerlink" href="#perform-svd" title="Permalink to this heading">#</a></h3>
+<p>SVD (Singular Value Decomposition) adalah teknik dekomposisi matriks yang memfaktorkan matriks dalam hasil kali matriks</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bobot kata terhadap masing masing topik</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 
-<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, raw_documents, y)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2131</span>             <span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sublinear_tf</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2132</span>         <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2133</span>         <span class="n">X</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2134</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2135</span>         <span class="c1"># X is already a transformed view of raw_documents so</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, raw_documents, y)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1386</span>                     <span class="k">break</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span> 
-<span class="ne">-&gt; </span><span class="mi">1388</span>         <span class="n">vocabulary</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_vocab</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_vocabulary_</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1389</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1390</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">_count_vocab</span><span class="nt">(self, raw_documents, fixed_vocab)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1273</span>         <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">raw_documents</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1274</span>             <span class="n">feature_counter</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="ne">-&gt; </span><span class="mi">1275</span>             <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">analyze</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>                 <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1277</span>                     <span class="n">feature_idx</span> <span class="o">=</span> <span class="n">vocabulary</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">_analyze</span><span class="nt">(doc, analyzer, tokenizer, ngrams, preprocessor, decoder, stop_words)</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span> 
-<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="k">if</span> <span class="n">decoder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">106</span>         <span class="n">doc</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="k">if</span> <span class="n">analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">doc</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py</span> in <span class="ni">decode</span><span class="nt">(self, doc)</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span> 
-<span class="g g-Whitespace">    </span><span class="mi">238</span>         <span class="k">if</span> <span class="n">doc</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">239</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>                 <span class="s2">&quot;np.nan is an invalid document, expected byte or unicode string.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>             <span class="p">)</span>
-
-<span class="ne">ValueError</span>: np.nan is an invalid document, expected byte or unicode string.
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">component</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">svd_model</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
+    <span class="n">top_terms_key</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">zipped</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">,</span><span class="n">top_terms_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0:  [(&#39;rakyat&#39;, 0.424665755978385), (&#39;yg&#39;, 0.41129353229144694)]
+Topic 1:  [(&#39;anies&#39;, 0.576395879969406), (&#39;sherly&#39;, 0.25775560667001607)]
+Topic 2:  [(&#39;anies&#39;, 0.6524469729262529), (&#39;baswedan&#39;, 0.13909817651681214)]
+Topic 3:  [(&#39;sherly&#39;, 0.5275724058109552), (&#39;anies&#39;, 0.2529789890409561)]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span> 
-<span class="c1"># Define the number of topics or components</span>
-<span class="n">num_components</span><span class="o">=</span><span class="mi">20</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bobot setiap topik terhadap  dokumen</span>
+<span class="n">df_lsa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lsa_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Topik 0&quot;</span><span class="p">,</span> <span class="s2">&quot;Topik 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Topik 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Topik 3&quot;</span><span class="p">])</span>
+<span class="n">df_lsa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Comment&quot;</span><span class="p">],</span> <span class="n">df_lsa</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_lsa</span><span class="p">[</span><span class="s1">&#39;Topik&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">df_lsa</span><span class="p">[[</span><span class="s1">&#39;Topik 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 3&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Create SVD object</span>
-<span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">num_components</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Fit SVD model on data</span>
-<span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
-
-<span class="c1"># Get Singular values and Components </span>
-<span class="n">Sigma</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">singular_values_</span> 
-<span class="n">V_transpose</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+<span class="n">df_lsa</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-51-a470863592ed&gt;</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Fit SVD model on data</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Get Singular values and Components</span>
+<div class="output text_html">
+  <div id="df-4895b560-8cfd-4ddf-84e1-2cd79f0e3f39">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;train_data&#39; is not defined
-</pre></div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Comment</th>
+      <th>Topik 0</th>
+      <th>Topik 1</th>
+      <th>Topik 2</th>
+      <th>Topik 3</th>
+      <th>Topik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Maka dari itu jangan pilih yang selalu melakuk...</td>
+      <td>0.046229</td>
+      <td>0.035594</td>
+      <td>-0.029488</td>
+      <td>-0.066109</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Anis optimis jika wakilnya lbu kopipah indar p...</td>
+      <td>0.028598</td>
+      <td>0.028241</td>
+      <td>-0.022215</td>
+      <td>-0.086499</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Yg penting jangan samapai ..agama jual politk ...</td>
+      <td>0.066718</td>
+      <td>0.006461</td>
+      <td>-0.003811</td>
+      <td>-0.057881</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cuman karna peristiwa gorong gorong..kebanyaka...</td>
+      <td>0.068652</td>
+      <td>-0.040945</td>
+      <td>0.016163</td>
+      <td>0.012171</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>penampilan merakyat adalah modus  yg gampang d...</td>
+      <td>0.292294</td>
+      <td>-0.160931</td>
+      <td>0.051885</td>
+      <td>0.007414</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>Anies is the best</td>
+      <td>0.072566</td>
+      <td>0.206365</td>
+      <td>0.226612</td>
+      <td>0.089535</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>Yang paling peduli emak 2 pak Prabowo yang ber...</td>
+      <td>0.035401</td>
+      <td>0.026266</td>
+      <td>0.006885</td>
+      <td>-0.046988</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>713</th>
+      <td>Kalo saya suka sama orang. Yaman biar. Aman???...</td>
+      <td>0.051677</td>
+      <td>0.019080</td>
+      <td>-0.031358</td>
+      <td>-0.052717</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>714</th>
+      <td>Klo perempuan milih petugas partai yang punya ...</td>
+      <td>0.073005</td>
+      <td>0.047915</td>
+      <td>-0.044159</td>
+      <td>-0.073804</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>715</th>
+      <td>Naeasuber bukan perempuan bicara ini Tim sukses,</td>
+      <td>0.048264</td>
+      <td>0.050886</td>
+      <td>-0.064589</td>
+      <td>-0.037147</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>716 rows × 6 columns</p>
 </div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4895b560-8cfd-4ddf-84e1-2cd79f0e3f39')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-4895b560-8cfd-4ddf-84e1-2cd79f0e3f39 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-4895b560-8cfd-4ddf-84e1-2cd79f0e3f39');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
 </div>
 </div>
 </div>
@@ -2087,13 +2266,21 @@ GANJAR LAH CAPRES PALING PEDULI PEREMPUAN MAKANYA JADI PENGGEMAR FILM PORNO ..SA
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-text">Clean Text</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword">Stopword</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-word">Slank Word</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">Tf-Idf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credential-crawling-youtube">Credential &amp; Crawling YouTube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-text">Clean Text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize">Tokenize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword">Stopword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-word">Slank Word</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-data">Modelling Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">Tf-Idf</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-svd">Perform SVD</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
